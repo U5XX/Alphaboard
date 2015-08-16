@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Alphaboard</string>
+    <string name="app_name">Soundboard for Doom</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Hello DOOM!</string>
     <string name="action_settings">Settings</string>
+    <string name="subtitle_categories">Categories</string>
+    <string name="subtitle_favorites">Favorites</string>
 </resources>

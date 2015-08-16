@@ -1,9 +1,11 @@
-package se.u5xx.alphaboard;
+package se.u5xx.alphaboard.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import se.u5xx.alphaboard.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -3,6 +3,8 @@ package se.u5xx.alphaboard.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import se.u5xx.alphaboard.fragment.SoundFragment;
 import timber.log.Timber;
 
 /**
@@ -27,15 +29,18 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 Timber.d("Loading categories fragment");
+                // TODO: Change to CategoryFragment once it's been implemented.
+                fragment = new SoundFragment();
                 break;
             case 1:
                 Timber.d("Loading favorites fragment");
+                fragment = new Fragment();
                 break;
             default:
                 fragment = null; // TODO: Maybe something more graceful.
                 break;
         }
-        return new Fragment(); // TODO: Change as soon as we got a "real" fragment to test with.
+        return fragment;
     }
 
 }

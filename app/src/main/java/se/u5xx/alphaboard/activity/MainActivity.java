@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.setAdapter(mViewPagerAdapter);
         mViewPager.setOnPageChangeListener(onPageChangeListener);
+
     }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {

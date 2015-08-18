@@ -3,8 +3,11 @@ package se.u5xx.alphaboard.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 
+import se.u5xx.alphaboard.fragment.CategoryFragment;
 import se.u5xx.alphaboard.fragment.SoundFragment;
+import se.u5xx.alphaboard.fragment.StartFragment;
 import timber.log.Timber;
 
 /**
@@ -12,7 +15,6 @@ import timber.log.Timber;
  * 2015-08-17
  */
 public class FragmentAdapter extends FragmentStatePagerAdapter {
-
 
     public FragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -29,8 +31,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 Timber.d("Loading categories fragment");
-                // TODO: Change to CategoryFragment once it's been implemented.
-                fragment = new SoundFragment();
+                fragment = new StartFragment();
                 break;
             case 1:
                 Timber.d("Loading favorites fragment");
@@ -42,5 +43,4 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         }
         return fragment;
     }
-
 }

@@ -14,6 +14,7 @@ package se.u5xx.alphaboard.entity;
 public class SoundSquare {
     private String labelText, soundFilePath;
     private int id;
+    private int category;
     private int imageResource;
 
 
@@ -21,14 +22,16 @@ public class SoundSquare {
      * Basic constructor.
      *
      * @param id            The unique ID of the SoundSquare.
+     * @param category      The ID of the associated category.
      * @param imageResource The image resource to be displayed.
      * @param labelText     The text of the label.
      * @param soundFilePath The path to the associated sound file.
      */
-    public SoundSquare(int id, int imageResource, String labelText, String soundFilePath) {
+    public SoundSquare(int id, int category, int imageResource, String labelText, String soundFilePath) {
         this.imageResource = imageResource;
         this.labelText = labelText;
         this.id = id;
+        this.category = category;
         this.soundFilePath = soundFilePath;
     }
 

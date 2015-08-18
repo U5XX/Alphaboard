@@ -1,8 +1,10 @@
 package se.u5xx.alphaboard.activity;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,5 +97,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Get a reference to the fragment currently being displayed.
+        Fragment frag = (Fragment)mViewPagerAdapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
+        FragmentManager fm = frag.getChildFragmentManager();
+
+        // If more than 1 back stack entry exists; a category has been opened.
+        if (fm.getBackStackEntryCount() > 1) {
+            // Popping the stack "closes" the category.
+            fm.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

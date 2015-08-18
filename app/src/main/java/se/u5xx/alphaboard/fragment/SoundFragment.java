@@ -16,6 +16,7 @@ import java.util.List;
 import se.u5xx.alphaboard.R;
 import se.u5xx.alphaboard.adapter.SoundGridAdapter;
 import se.u5xx.alphaboard.entity.SoundSquare;
+import timber.log.Timber;
 
 /**
  * Created by Fredrik Andersson <cfredrikandersson@gmail.com>
@@ -31,10 +32,12 @@ public class SoundFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_test, container, false);
+        view = inflater.inflate(R.layout.frag_sound, container, false);
 
         grid = (RecyclerView)view.findViewById(R.id.recycler);
         grid.setLayoutManager(new GridLayoutManager(getActivity(), COLUMNS));
+
+        // TODO: Implement factory class/es for constructing the lists of SoundSquares and categories.
         grid.setAdapter(new SoundGridAdapter(getActivity(), buildGrid()));
         return view;
     }
@@ -47,9 +50,15 @@ public class SoundFragment extends Fragment {
         List<SoundSquare> list = new ArrayList<>();
 
         for(int i = 0; i < 20; i++){
-            list.add(new SoundSquare(i, R.drawable.abc_btn_switch_to_on_mtrl_00001, String.format("Square %s", i), ""));
+            list.add(new SoundSquare(i, i % 2, R.drawable.abc_btn_switch_to_on_mtrl_00001, String.format("Name: %s", i), ""));
         }
 
         return list;
+    }
+
+    @Override
+    public void onDestroy() {
+        Timber.d("onDestroy called.");
+        super.onDestroy();
     }
 }

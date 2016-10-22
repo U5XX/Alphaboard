@@ -19,12 +19,13 @@ public class StartFragment extends Fragment implements SelectionListener {
 
     private View view;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_start, container, false);
 
-        setNestedFragment(CategoryFragment.newInstance(this));
+        setNestedFragment(CollectionFragment.newInstance(this));
 
         return view;
     }
@@ -43,7 +44,7 @@ public class StartFragment extends Fragment implements SelectionListener {
 
     @Override
     public void categoryCallback(int categoryId) {
-        // TODO: Use the category ID to show a SoundFragment with the corresponding sound squares.
-        setNestedFragment(new SoundFragment());
+        // TODO: Use the category ID to show a BoardFragment with the corresponding sound squares.
+        setNestedFragment(new BoardFragment());
     }
 }

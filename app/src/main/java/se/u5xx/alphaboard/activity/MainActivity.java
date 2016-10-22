@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Get a reference to the fragment currently being displayed.
-        Fragment frag = (Fragment)mViewPagerAdapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
+        Fragment frag = (Fragment) mViewPagerAdapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
         FragmentManager fm = frag.getChildFragmentManager();
+
 
         // If more than 1 back stack entry exists; a category has been opened.
         if (fm.getBackStackEntryCount() > 1) {

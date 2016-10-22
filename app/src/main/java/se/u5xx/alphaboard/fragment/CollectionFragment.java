@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import se.u5xx.alphaboard.R;
 import se.u5xx.alphaboard.interfaces.SelectionListener;
 
@@ -16,15 +18,15 @@ import se.u5xx.alphaboard.interfaces.SelectionListener;
  * Created by Fredrik Andersson <cfredrikandersson@gmail.com>
  * 2015-08-18.
  */
-public class CategoryFragment extends Fragment {
+public class CollectionFragment extends Fragment {
 
-    private View view;
-    private Button button;
+    @BindView(R.id.button)
+    Button button;
 
     private SelectionListener listener;
 
-    public static CategoryFragment newInstance(SelectionListener listener){
-        CategoryFragment frag = new CategoryFragment();
+    public static CollectionFragment newInstance(SelectionListener listener) {
+        CollectionFragment frag = new CollectionFragment();
         frag.setListener(listener);
 
         // TODO: Implement factory class/es for constructing the lists of SoundSquares and categories.
@@ -32,25 +34,23 @@ public class CategoryFragment extends Fragment {
         return frag;
     }
 
-    private void setListener(SelectionListener listener){
+    private void setListener(SelectionListener listener) {
         this.listener = listener;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_category, container, false);
-        button = (Button)view.findViewById(R.id.button);
+        View view = inflater.inflate(R.layout.frag_collection, container, false);
+        ButterKnife.bind(this, view);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.categoryCallback(0);// TODO: Change to pass along actual category ID.
+                if (null != listener) listener.categoryCallback(0);// TODO: Change to pass along actual category ID.
             }
         });
 
         return view;
     }
-
-
 }

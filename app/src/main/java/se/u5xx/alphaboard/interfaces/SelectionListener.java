@@ -1,7 +1,7 @@
 package se.u5xx.alphaboard.interfaces;
 
 /**
- * Allows the CategoryFragment to notify the StartFragment that a category has been chosen.
+ * Allows the CollectionFragment to notify the StartFragment that a category has been chosen.
  *
  * NOTE: This interface could (and should?) probably be replaced with communications using Otto.
  *

@@ -3,10 +3,7 @@ package se.u5xx.alphaboard.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 
-import se.u5xx.alphaboard.fragment.CategoryFragment;
-import se.u5xx.alphaboard.fragment.SoundFragment;
 import se.u5xx.alphaboard.fragment.StartFragment;
 import timber.log.Timber;
 

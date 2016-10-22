@@ -39,7 +39,6 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.SquareViewHold
         this.collectionEvent = collectionEvent;
     }
 
-
     @Override
     public SquareViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // Inflate the SoundSquare-xml and bind it to the instance of ViewHolder.

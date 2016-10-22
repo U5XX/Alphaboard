@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import se.u5xx.alphaboard.BuildConfig;
 import se.u5xx.alphaboard.R;
@@ -18,9 +18,9 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.main_toolbar)
+    @BindView(R.id.main_toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager mViewPager;
 
     FragmentAdapter mViewPagerAdapter;

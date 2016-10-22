@@ -18,14 +18,12 @@ import se.u5xx.alphaboard.interfaces.SelectionListener;
  */
 public class StartFragment extends BaseFragment implements SelectionListener {
 
-    private View view;
-
 
     private BoardFragment boardFragment;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_start, container, false);
+        View view = inflater.inflate(R.layout.frag_start, container, false);
 
         setNestedFragment(CollectionFragment.newInstance(this));
 

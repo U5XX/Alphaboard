@@ -14,7 +14,6 @@ import se.u5xx.alphaboard.R;
 import se.u5xx.alphaboard.entity.CollectionSquare;
 import se.u5xx.alphaboard.entity.Square;
 import se.u5xx.alphaboard.interfaces.LoadCollectionEvent;
-
 import java.util.List;
 
 /**

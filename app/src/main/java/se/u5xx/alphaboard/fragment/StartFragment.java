@@ -9,23 +9,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import se.u5xx.alphaboard.R;
+import se.u5xx.alphaboard.fragment.base.BaseFragment;
 import se.u5xx.alphaboard.interfaces.SelectionListener;
 
 /**
  * Created by Fredrik Andersson <cfredrikandersson@gmail.com>
  * 2015-08-18.
  */
-public class StartFragment extends Fragment implements SelectionListener {
+public class StartFragment extends BaseFragment implements SelectionListener {
 
     private View view;
 
 
+    private BoardFragment boardFragment;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_start, container, false);
 
         setNestedFragment(CollectionFragment.newInstance(this));
+
+        boardFragment = new BoardFragment();
 
         return view;
     }
@@ -45,6 +49,11 @@ public class StartFragment extends Fragment implements SelectionListener {
     @Override
     public void categoryCallback(int categoryId) {
         // TODO: Use the category ID to show a BoardFragment with the corresponding sound squares.
-        setNestedFragment(new BoardFragment());
+        setNestedFragment(boardFragment);
+    }
+
+    @Override
+    public boolean onBackButtonPressed() {
+        return null != boardFragment && boardFragment.onBackButtonPressed();
     }
 }

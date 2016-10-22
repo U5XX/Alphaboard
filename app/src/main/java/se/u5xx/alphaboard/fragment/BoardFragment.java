@@ -4,7 +4,6 @@ package se.u5xx.alphaboard.fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +14,7 @@ import se.u5xx.alphaboard.adapter.GridAdapter;
 import se.u5xx.alphaboard.entity.CollectionSquare;
 import se.u5xx.alphaboard.entity.SoundSquare;
 import se.u5xx.alphaboard.entity.Square;
+import se.u5xx.alphaboard.fragment.base.BaseFragment;
 import se.u5xx.alphaboard.interfaces.LoadCollectionEvent;
 import timber.log.Timber;
 
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
-public class BoardFragment extends Fragment implements LoadCollectionEvent {
+public class BoardFragment extends BaseFragment implements LoadCollectionEvent {
 
     private Stack<CollectionSquare> collectionSquareStack;
     private RecyclerView grid;
@@ -36,9 +36,10 @@ public class BoardFragment extends Fragment implements LoadCollectionEvent {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_sound, container, false);
-
         grid = (RecyclerView) view.findViewById(R.id.recycler);
-        new GridLoader(this).execute();
+
+        collectionSquareStack = new Stack<>();
+        loadCollection(new CollectionSquare(1, 2, "3"));
         return view;
     }
 
@@ -72,6 +73,13 @@ public class BoardFragment extends Fragment implements LoadCollectionEvent {
         collectionSquareStack.pop();
         new GridLoader(this).execute();
 //        collectionSquareStack.peek();
+    }
+
+    @Override
+    public boolean onBackButtonPressed() {
+        if (collectionSquareStack.size() == 1) return false;
+        popBoardStack();
+        return true;
     }
 
     class GridLoader extends AsyncTask<Void, List<SoundSquare>, List<Square>> {

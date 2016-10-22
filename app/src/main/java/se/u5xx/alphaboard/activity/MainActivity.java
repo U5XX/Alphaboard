@@ -1,19 +1,18 @@
 package se.u5xx.alphaboard.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import se.u5xx.alphaboard.BuildConfig;
 import se.u5xx.alphaboard.R;
 import se.u5xx.alphaboard.adapter.FragmentAdapter;
+import se.u5xx.alphaboard.fragment.base.BaseFragment;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -102,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Get a reference to the fragment currently being displayed.
-        Fragment frag = (Fragment) mViewPagerAdapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
+        BaseFragment frag = (BaseFragment) mViewPagerAdapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
         FragmentManager fm = frag.getChildFragmentManager();
 
+        boolean handledBackButtonPressed = frag.onBackButtonPressed();
+        if (handledBackButtonPressed) return;
 
         // If more than 1 back stack entry exists; a category has been opened.
         if (fm.getBackStackEntryCount() > 1) {

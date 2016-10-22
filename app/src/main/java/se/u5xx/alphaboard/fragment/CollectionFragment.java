@@ -3,22 +3,21 @@ package se.u5xx.alphaboard.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import se.u5xx.alphaboard.R;
+import se.u5xx.alphaboard.fragment.base.BaseFragment;
 import se.u5xx.alphaboard.interfaces.SelectionListener;
 
 /**
  * Created by Fredrik Andersson <cfredrikandersson@gmail.com>
  * 2015-08-18.
  */
-public class CollectionFragment extends Fragment {
+public class CollectionFragment extends BaseFragment {
 
     @BindView(R.id.button)
     Button button;
@@ -52,5 +51,10 @@ public class CollectionFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public boolean onBackButtonPressed() {
+        return false;
     }
 }
